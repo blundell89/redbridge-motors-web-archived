@@ -1,37 +1,61 @@
 import React from "react";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 import logo from "../assets/logo.svg";
-import Home from "../pages/Home";
+import Routes from '../Routes';
 
-const About = () => (
-  <div>
-    <h2>About</h2>
-  </div>
+const Header = styled.header`
+  img.logo {
+    margin: 1rem 0 1rem 1rem;
+    height: 4em;
+  }
+
+  .flex {
+    display: flex;
+    align-items: center;
+  }
+`;
+
+const Nav = styled.nav`
+  ul {
+    list-style-type: none;
+    display: flex;
+    font-size: 1.2rem;
+  }
+
+  li {
+    margin: 0 1rem;
+
+    a {
+      color: #000;
+      text-decoration: none;
+
+      &: hover {
+        color: gray;
+      }
+    }
+  }
+`;
+
+export default () => (
+  <Header>
+    <div className="flex">
+      <img src={logo} className="logo" alt="Redbridge Motors logo" />
+        <>
+          <Nav>
+            <ul>
+              <li>
+                <Link to={Routes.home}>Home</Link>
+              </li>
+              <li>
+                <Link to={Routes.about}>About</Link>
+              </li>
+              <li>
+                <Link to={Routes.findMyCar}>Car Finder</Link>
+              </li>
+            </ul>
+          </Nav>
+        </>
+    </div>
+  </Header>
 );
-
-const Header = () => (
-  <Router>
-    <>
-      <header>
-        <img src={logo} alt="" />
-      </header>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-        </ul>
-
-        <hr />
-
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-      </div>
-    </>
-  </Router>
-);
-
-export default Header;
