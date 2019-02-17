@@ -7,7 +7,7 @@ import Routes from '../Routes';
 const Header = styled.header`
   img.logo {
     margin: 1rem 0 1rem 1rem;
-    height: 4em;
+    height: 4rem;
   }
 
   .flex {
@@ -30,7 +30,7 @@ const Nav = styled.nav`
       color: #000;
       text-decoration: none;
 
-      &: hover {
+      &:hover {
         color: gray;
       }
     }
