@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import icon from '../assets/icons8-fiat-500-480.png';
+import icon from '../assets/icons8-wheel-48.png';
 import logo from '../assets/logo.svg';
 import Routes from '../Routes';
 
@@ -28,16 +28,7 @@ const Nav = styled.nav`
 
   li {
     display: flex;
-    margin: 0 1rem;
-
-    a {
-      color: #000;
-      text-decoration: none;
-
-      &:hover {
-        color: gray;
-      }
-    }
+    align-items: center;
 
     &:not(:last-child)::after {
       content: '';
@@ -45,7 +36,21 @@ const Nav = styled.nav`
       background-size: 1rem;
       height: 1rem;
       width: 1rem;
+      margin: 0 1rem;
     }
+  }
+`;
+
+const StyledNavLink = styled(NavLink)`
+  color: #000;
+  text-decoration: none;
+
+  &:hover {
+    color: gray;
+  }
+
+  &.active {
+    text-decoration: underline;
   }
 `;
 
@@ -55,13 +60,15 @@ export default () => (
     <Nav>
       <ul>
         <li>
-          <Link to={Routes.home}>Home</Link>
+          <StyledNavLink exact to={Routes.home}>
+            Home
+          </StyledNavLink>
         </li>
         <li>
-          <Link to={Routes.about}>About</Link>
+          <StyledNavLink to={Routes.about}>About</StyledNavLink>
         </li>
         <li>
-          <Link to={Routes.findMyCar}>Car Finder</Link>
+          <StyledNavLink to={Routes.findMyCar}>Car Finder</StyledNavLink>
         </li>
       </ul>
     </Nav>
